@@ -4,7 +4,7 @@
   "short_name": "GA Opt-Out",
   "version": "1.0.0",
   "author": "Quantable",
-  "homepage_url": "https://quantable.com",
+  "homepage_url": "https://github.com/jhpacker/ga-optout-persite",
   "description": "Sends recognized Google Analytics data collection requests to a local file rather than to Google. Stops your data from reaching Google but allows you to see what would have been sent to Google.",
   "permissions": [
     "declarativeNetRequest",
