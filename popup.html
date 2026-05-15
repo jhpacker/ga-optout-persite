@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      padding: 12px 14px;
+      min-width: 260px;
+      margin: 0;
+      color: #222;
+    }
+    .host {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    label.disabled {
+      color: #999;
+      cursor: default;
+    }
+    .note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+    .stats {
+      font-size: 12px;
+      color: #2a8;
+      margin-bottom: 10px;
+    }
+    .footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      font-size: 11px;
+    }
+    .devtools {
+      margin-top: 8px;
+      color: #555;
+    }
+    .filter-row {
+      font-size: 11px;
+      color: #888;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-row code {
+      background: #f1f3f4;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      color: #333;
+    }
+    .copy-btn {
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 10px;
+      cursor: pointer;
+      color: #555;
+    }
+    .copy-btn:hover { background: #f1f3f4; }
+    .copy-btn.copied { color: #2a8; border-color: #2a8; }
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="host" id="host">…</div>
+  <div class="stats" id="stats" hidden></div>
+  <label id="label">
+    <input type="checkbox" id="toggle" disabled>
+    <span>Block Google Analytics on this site</span>
+  </label>
+  <div class="note" id="note"></div>
+  <div class="footer">
+    <div><a id="options">Manage full list…</a></div>
+    <div class="devtools">
+      See requests in DevTools Console
+      <div class="filter-row">
+        filter: <code>[GA Opt-Out]</code>
+        <button class="copy-btn" id="copy-filter" type="button">copy</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

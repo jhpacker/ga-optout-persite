@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GA Opt-Out (Per Site) — Options</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    p.lede { color: #555; margin-top: 0; }
+    textarea { width: 100%; height: 220px; font-family: ui-monospace, Menlo, monospace; font-size: 13px; padding: 0.5rem; box-sizing: border-box; }
+    .row { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.75rem; }
+    button { padding: 0.5rem 1rem; font-size: 14px; cursor: pointer; }
+    .status { color: #2a7; font-size: 13px; min-height: 1.25em; }
+    .help { color: #555; font-size: 13px; margin-top: 1.5rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+    code { background: #f3f3f3; padding: 0 0.25rem; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>GA Opt-Out (Per Site)</h1>
+  <p class="lede">Google Analytics collect requests on these sites will be redirected to a local empty response. They still appear in DevTools Network with their full payload, but never reach Google.</p>
+
+  <label for="sites"><strong>Blocked sites</strong> (one domain per line)</label>
+  <textarea id="sites" placeholder="example.com&#10;news.ycombinator.com&#10;mycompany.com"></textarea>
+
+  <div class="row">
+    <button id="save">Save</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <div class="help">
+    <p><strong>Tips</strong></p>
+    <ul>
+      <li>Enter the registrable domain only (e.g. <code>example.com</code>). Subdomains are matched automatically.</li>
+      <li>Leading <code>https://</code> and <code>www.</code> are stripped on save.</li>
+      <li>Matches any request to <code>/g/collect</code> whose query string contains <code>tid=G-…</code> — regardless of host.</li>
+      <li>This covers <code>google-analytics.com</code> (all regional subdomains) and server-side GTM relays on custom domains like <code>gtm.example.com</code>.</li>
+      <li>Universal Analytics (<code>tid=UA-…</code>) is deprecated and not matched.</li>
+    </ul>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
