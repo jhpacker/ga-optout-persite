@@ -61,10 +61,13 @@ function initiatorMatches(initiator) {
 
 const ICON_ON = { 16: 'icons/icon16.png', 32: 'icons/icon32.png' };
 const ICON_OFF = { 16: 'icons/icon16-off.png', 32: 'icons/icon32-off.png' };
+const TITLE_ON = 'GA Opt-Out: blocking on this site';
+const TITLE_OFF = 'GA Opt-Out: GA flows on this site';
 
 async function updateIconForTab(tabId, url) {
-  const path = urlMatches(url) ? ICON_ON : ICON_OFF;
-  try { await chrome.action.setIcon({ tabId, path }); } catch {}
+  const on = urlMatches(url);
+  try { await chrome.action.setIcon({ tabId, path: on ? ICON_ON : ICON_OFF }); } catch {}
+  try { await chrome.action.setTitle({ tabId, title: on ? TITLE_ON : TITLE_OFF }); } catch {}
 }
 
 async function refreshAllIcons() {
